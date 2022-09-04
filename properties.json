@@ -3,6 +3,6 @@
     "track": "frontend",
     "email": "mashefor@gmail.com",
     "githubUsername": "ashefor",
-    "deployedAppURL": "",
-    "explainer": ""
+    "deployedAppURL": "https://ashefor-talentql-demo.netlify.app",
+    "explainer": "Build and deploy a very simple frontend app for paginated data for the frontend track as instructed from talentql"
 }
