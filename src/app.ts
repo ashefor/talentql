@@ -63,8 +63,8 @@ const renderTableView = async (page) => {
 }
 
 nextBtn.addEventListener('click', () => {
-    // const tr = document.querySelector(`tbody > tr:nth-child(${1})`)
-    // console.log(tr)
+    const tr = document.querySelector(`tbody > tr:nth-child(${1})`)
+    console.log(tr)
     currentPage = currentPage += 1;
     renderTableView(currentPage)
 })
