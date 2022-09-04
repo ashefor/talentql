@@ -35,7 +35,7 @@ const getTableData = async (page) => {
 const getTableHTML = (data: Array<TableRowItem>): string => {
     let html = '';
     data.forEach(element => {
-        let htmlSegment = `<tr data-entryid=${element.id} class="user">
+        let htmlSegment = `<tr data-entryid=hg class="user">
     <td>${element.row}</td>         
     <td>${element.gender}</td>
     <td>${element.age}</td>
