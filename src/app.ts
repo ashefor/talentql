@@ -35,7 +35,7 @@ const getTableData = async (page) => {
 const getTableHTML = (data: Array<TableRowItem>): string => {
     let html = '';
     data.forEach(element => {
-        let htmlSegment = `<tr data-entryid="hg" class="user">
+        let htmlSegment = `<tr data-entryid="${element.id}" class="user">
     <td>${element.row}</td>         
     <td>${element.gender}</td>
     <td>${element.age}</td>
@@ -63,8 +63,8 @@ const renderTableView = async (page) => {
 }
 
 nextBtn.addEventListener('click', () => {
-    const tr = document.querySelector(`tbody > tr:nth-child(${1})`)
-    console.log(tr)
+    // const tr = document.querySelector(`tbody > tr:nth-child(${1})`)
+    // console.log(tr)
     currentPage = currentPage += 1;
     renderTableView(currentPage)
 })
