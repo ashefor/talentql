@@ -53,7 +53,6 @@ const renderTableView = async (page) => {
     } else {
         const data: apiData = await getTableData(currentPage);
         tableData = data.results[0];
-        console.log(tableData)
         html = getTableHTML(tableData[page])
     }
     tbody.innerHTML = html;
@@ -63,8 +62,6 @@ const renderTableView = async (page) => {
 }
 
 nextBtn.addEventListener('click', () => {
-    const tr = document.querySelector(`tbody > tr:nth-child(${1})`)
-    console.log(tr)
     currentPage = currentPage += 1;
     renderTableView(currentPage)
 })
