@@ -14,12 +14,11 @@ show and hide api loader
 
 ```
 const displayLoader = () => {
-    loader?.classList.add("display");
+    loader!.classList.add("display");
 }
 
-
-const hideLoader =() => {
-    loader?.classList.remove("display");
+const hideLoader = () => {
+    loader!.classList.remove("display");
 }
 
 ```
@@ -72,7 +71,7 @@ const renderTableView = async (page) => {
         html = getTableHTML(tableData[page])
     } else {
         const data: apiData = await getTableData(currentPage);
-        tableData = data.results[0];
+        tableData = data!.results[0];
         html = getTableHTML(tableData[page])
     }
     tbody!.innerHTML = html;
