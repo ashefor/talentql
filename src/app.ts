@@ -14,20 +14,32 @@ interface TableRowItem {
     row: string
 }
 
-const nextBtn = document.querySelector('[data-nextbtn]') as HTMLButtonElement;
-const prevBtn = document.querySelector('[data-prevbtn]') as HTMLButtonElement;
-const tbody = document.querySelector('[data-sink]');
-const previewElement = document.querySelector('[data-pageview]');
+const nextBtn = document.querySelector("[data-nextbtn]") as HTMLButtonElement;
+const prevBtn = document.querySelector("[data-prevbtn]") as HTMLButtonElement;
+const tbody = document.querySelector("[data-sink]");
+const previewElement = document.querySelector("[data-pageview]");
+const loader = document.querySelector(".loader");
 let currentPage = 1;
 let tableData: TableData = {};
 
+const displayLoader = () => {
+    loader?.classList.add("display");
+}
+
+const hideLoader =() => {
+    loader?.classList.remove("display");
+}
+
 const getTableData = async (page) => {
+    displayLoader()
     let url = `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${page}`;
     try {
         let res = await fetch(url);
+        hideLoader()
         return await res.json();
     } catch (error) {
         console.log(error);
+        hideLoader();
     }
 }
 
@@ -52,7 +64,7 @@ const renderTableView = async (page) => {
         html = getTableHTML(tableData[page])
     } else {
         const data: apiData = await getTableData(currentPage);
-        tableData = data.results[0];
+        tableData = data?.results[0];
         html = getTableHTML(tableData[page])
     }
     tbody!.innerHTML = html;

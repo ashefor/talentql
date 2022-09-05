@@ -1,12 +1,29 @@
-### How it works
+# How it works
 
-To get the buttons, table body and label preview element
+To get the buttons, loader, table body and label preview element 
+
 ```
 const nextBtn = document.querySelector('[data-nextbtn]') as HTMLButtonElement;
 const prevBtn = document.querySelector('[data-prevbtn]') as HTMLButtonElement;
 const tbody = document.querySelector('[data-sink]');
 const previewElement = document.querySelector('[data-pageview]');
+const loader = document.querySelector(".loader");
 ```
+
+show and hide api loader
+
+```
+const displayLoader = () => {
+    loader?.classList.add("display");
+}
+
+
+const hideLoader =() => {
+    loader?.classList.remove("display");
+}
+
+```
+
 
 fetching the data from the endpoint 
 
@@ -15,12 +32,15 @@ let currentPage = 1;
 let tableData: TableData = {};
 
 const getTableData = async (page) => {
+    displayLoader()
     let url = `https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=${page}`;
     try {
         let res = await fetch(url);
+        hideLoader()
         return await res.json();
     } catch (error) {
         console.log(error);
+        hideLoader();
     }
 }
 ```
